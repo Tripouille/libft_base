@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strrchr.c                                     .::    .:/ .      .::   */
+/*   ft_strncmp.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: jgambard <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/07 17:35:48 by jgambard     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/07 17:46:36 by jgambard    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/07 17:45:56 by jgambard     #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/07 17:46:51 by jgambard    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-char	*ft_strrchr(const char *s, int c)
+int		ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int		i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	while (i >= 0)
-	{
-		if (s[i] == (char)c)
-			return ((char*)s + i);
-		i--;
-	}
-	return (0);
+	if ((*s1 || *s2) && (*s1 == *s2 && n && n - 1))
+		return (ft_strncmp(++s1, ++s2, --n));
+	else
+		return (n ? (unsigned char)*s1 - (unsigned char)*s2 : 0);
 }
