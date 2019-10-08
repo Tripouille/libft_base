@@ -6,7 +6,7 @@
 /*   By: jgambard <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 11:13:36 by jgambard     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 11:37:44 by jgambard    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/08 13:01:21 by jgambard    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,6 +20,16 @@ char	ft_cinstr(char const *s1, char const c)
 	return (*s1 == c ? 1 : 0);
 }
 
+int		ft_toend(char const *s1)
+{
+	int		left;
+
+	left = 0;
+	while (s1[left])
+		left++;
+	return (left);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		start;
@@ -28,12 +38,16 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*trim;
 
 	start = 0;
-	while (ft_cinstr(set, s1[start]))
+	while (s1[start] && ft_cinstr(set, s1[start]))
 		start++;
-	end = start;
-	while (s1[end])
-		end++;
-	while (ft_cinstr(set, s1[--end]))
+	end = start + ft_toend(s1 + start);
+	if (end == start)
+	{
+		trim = malloc(sizeof(*trim));
+		*trim = 0;
+		return (trim);
+	}
+	while (end >= 0 && ft_cinstr(set, s1[--end]))
 		;
 	if (!(trim = malloc(sizeof(*trim) * (end - start + 2))))
 		return (0);
