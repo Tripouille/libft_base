@@ -6,14 +6,14 @@
 /*   By: jgambard <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 16:24:59 by jgambard     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 16:30:05 by jgambard    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/09 11:32:23 by jgambard    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void*))
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	(*f)(lst->content);
 	if (lst->next)
