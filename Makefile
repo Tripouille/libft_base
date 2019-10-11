@@ -21,9 +21,9 @@ bonus:		all
 .c.o:		${INCLUDES}
 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-${NAME}:	${OBJS}
-			ar rc libft.a ${OBJS}
-			ranlib libft.a
+${NAME}:	${OBJS} ${INCLUDES}
+			ar rc ${NAME} ${OBJS}
+			ranlib ${NAME}
 
 clean:
 			${RM} ${OBJS}
@@ -33,4 +33,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		all bonus clean fclean re
