@@ -21,15 +21,19 @@ CFLAGS		= -Wall -Wextra -Werror
 
 all:		${NAME}
 
+${OBJS}:	${INCLUDES}
+
+${OBJS_BONUS}:	${INCLUDES}
+
 .c.o:		${INCLUDES}
 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-bonus:		${OBJS} ${OBJS_BONUS} ${INCLUDES}
-			ar rc ${NAME} ${OBJS} ${OBJS_BONUS}
+${NAME}:	${INCLUDES} ${OBJS}
+			ar rc ${NAME} ${OBJS}
 			ranlib ${NAME}
 
-${NAME}:	${OBJS} ${INCLUDES}
-			ar rc ${NAME} ${OBJS}
+bonus:		${INCLUDES} ${OBJS} ${OBJS_BONUS}
+			ar rc ${NAME} ${OBJS} ${OBJS_BONUS}
 			ranlib ${NAME}
 
 clean:
