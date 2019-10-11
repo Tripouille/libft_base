@@ -16,13 +16,14 @@ CFLAGS		= -Wall -Wextra -Werror
 
 all:		${NAME}
 
+bonus:		all
+
 .c.o:		${INCLUDES}
 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS}
 			ar rc libft.a ${OBJS}
 			ranlib libft.a
-			${RM} ${OBJS}
 
 clean:
 			${RM} ${OBJS}
