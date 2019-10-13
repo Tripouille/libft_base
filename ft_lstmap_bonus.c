@@ -1,22 +1,43 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_lstdelone.c                                   .::    .:/ .      .::   */
+/*   ft_lstmap.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: jgambard <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/08 15:43:46 by jgambard     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 16:10:51 by jgambard    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/08 16:33:15 by jgambard     #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/13 11:02:05 by jgambard    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
+#include "stdlib.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+t_list		*ft_lstn(void *content)
 {
-	(*del)(lst->content);
-	lst->content = 0;
-	free(lst);
+	t_list		*new;
+
+	if (!(new = malloc(sizeof(*new))))
+		return (0);
+	new->content = (void*)content;
+	new->next = 0;
+	return (new);
+}
+
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *))
+{
+	t_list		*map;
+	t_list		*tmp;
+
+	if (!lst || !(map = ft_lstn((*f)(lst->content))))
+		return (0);
+	tmp = map;
+	while ((lst = lst->next))
+	{
+		if (!(map->next = ft_lstn((*f)(lst->content))))
+			return (0);
+		map = map->next;
+	}
+	return (tmp);
 }
