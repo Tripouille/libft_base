@@ -6,7 +6,7 @@
 /*   By: jgambard <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 11:13:36 by jgambard     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 13:01:21 by jgambard    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/14 10:16:22 by jgambard    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,8 +43,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end = start + ft_toend(s1 + start);
 	if (end == start)
 	{
-		trim = malloc(sizeof(*trim));
-		*trim = 0;
+		if ((trim = malloc(sizeof(*trim))))
+			*trim = 0;
 		return (trim);
 	}
 	while (end >= 0 && ft_cinstr(set, s1[--end]))
