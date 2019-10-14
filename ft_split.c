@@ -6,7 +6,7 @@
 /*   By: jgambard <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 11:40:05 by jgambard     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 11:51:29 by jgambard    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/14 10:04:41 by jgambard    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,7 +41,19 @@ int		ft_wsize(char const *str, char c)
 	return (i);
 }
 
-void	ft_fillsplit(char **split, char const *str, char c, int w)
+char	**ft_free_all(char **split, int i)
+{
+	if (--i >= 0)
+	{
+		ft_free_all(split + 1, i);
+		free(*split);
+	}
+	else
+		free(split);
+	return (0);
+}
+
+char	**ft_fillsplit(char **split, char const *str, char c, int w)
 {
 	int		wsize;
 	int		istr;
@@ -55,7 +67,8 @@ void	ft_fillsplit(char **split, char const *str, char c, int w)
 		while (str[istr] && str[istr] == c)
 			istr++;
 		wsize = ft_wsize(str + istr, c);
-		split[i] = malloc(sizeof(**split) * (1 + wsize));
+		if (!(split[i] = malloc(sizeof(**split) * (1 + wsize))))
+			return (ft_free_all(split, i));
 		split[i][wsize] = 0;
 		j = 0;
 		while (str[istr + j] && str[istr + j] != c)
@@ -65,6 +78,7 @@ void	ft_fillsplit(char **split, char const *str, char c, int w)
 		}
 		istr += j;
 	}
+	return (split);
 }
 
 char	**ft_split(char const *s, char c)
@@ -77,8 +91,6 @@ char	**ft_split(char const *s, char c)
 	w = ft_wc(s, c);
 	if (!(split = malloc(sizeof(*split) * (1 + w))))
 		return (0);
-	if (w)
-		ft_fillsplit(split, s, c, w);
 	split[w] = 0;
-	return (split);
+	return (ft_fillsplit(split, s, c, w));
 }
