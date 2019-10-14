@@ -6,7 +6,7 @@
 /*   By: jgambard <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 16:33:15 by jgambard     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/13 11:02:05 by jgambard    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/14 15:21:01 by jgambard    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "stdlib.h"
 
-t_list		*ft_lstn(void *content)
+static t_list		*ft_lstn(void *content)
 {
 	t_list		*new;
 
@@ -25,7 +25,7 @@ t_list		*ft_lstn(void *content)
 	return (new);
 }
 
-t_list		*ft_lstmap(t_list *lst, void *(*f)(void *))
+t_list				*ft_lstmap(t_list *lst, void *(*f)(void *))
 {
 	t_list		*map;
 	t_list		*tmp;

@@ -6,21 +6,21 @@
 /*   By: jgambard <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 11:13:36 by jgambard     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/14 10:16:22 by jgambard    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/14 15:15:33 by jgambard    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-char	ft_cinstr(char const *s1, char const c)
+static char		ft_cinstr(char const *s1, char const c)
 {
 	while (*s1 && *s1 != c)
 		s1++;
 	return (*s1 == c ? 1 : 0);
 }
 
-int		ft_toend(char const *s1)
+static int		ft_toend(char const *s1)
 {
 	int		left;
 
@@ -30,7 +30,7 @@ int		ft_toend(char const *s1)
 	return (left);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char			*ft_strtrim(char const *s1, char const *set)
 {
 	int		start;
 	int		end;

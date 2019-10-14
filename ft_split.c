@@ -6,14 +6,14 @@
 /*   By: jgambard <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 11:40:05 by jgambard     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/14 10:04:41 by jgambard    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/14 15:17:01 by jgambard    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		ft_wc(char const *str, char c)
+static int		ft_wc(char const *str, char c)
 {
 	int		i;
 	int		count;
@@ -31,7 +31,7 @@ int		ft_wc(char const *str, char c)
 	return (count);
 }
 
-int		ft_wsize(char const *str, char c)
+static int		ft_wsize(char const *str, char c)
 {
 	int		i;
 
@@ -41,7 +41,7 @@ int		ft_wsize(char const *str, char c)
 	return (i);
 }
 
-char	**ft_free_all(char **split, int i)
+static char		**ft_free_all(char **split, int i)
 {
 	if (--i >= 0)
 	{
@@ -53,7 +53,7 @@ char	**ft_free_all(char **split, int i)
 	return (0);
 }
 
-char	**ft_fillsplit(char **split, char const *str, char c, int w)
+static char		**ft_fillsplit(char **split, char const *str, char c, int w)
 {
 	int		wsize;
 	int		istr;
@@ -81,7 +81,7 @@ char	**ft_fillsplit(char **split, char const *str, char c, int w)
 	return (split);
 }
 
-char	**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
 	char	**split;
 	int		w;

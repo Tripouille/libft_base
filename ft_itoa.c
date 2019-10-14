@@ -6,14 +6,14 @@
 /*   By: jgambard <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 12:05:22 by jgambard     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 12:14:07 by jgambard    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/14 15:17:30 by jgambard    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-long	ft_pow(long nbr, long pow)
+static long		ft_pow(long nbr, long pow)
 {
 	long		result;
 
@@ -23,7 +23,7 @@ long	ft_pow(long nbr, long pow)
 	return (result);
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	char	*result;
 	char	neg;
