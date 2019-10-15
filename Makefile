@@ -28,7 +28,7 @@ ${OBJS}:			${INCLUDES}
 
 ${OBJS_BONUS}:		${INCLUDES}
 
-${NAME}:			${INCLUDES} ${OBJS}
+$(NAME):			${INCLUDES} ${OBJS}
 					ar -rcs ${NAME} ${OBJS}
 
 bonus:				all ${OBJS_BONUS}
