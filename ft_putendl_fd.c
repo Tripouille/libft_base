@@ -6,7 +6,7 @@
 /*   By: jgambard <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 13:09:05 by jgambard     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/14 10:23:45 by jgambard    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/16 14:09:30 by jgambard    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,6 +17,8 @@ void	ft_putendl_fd(char *s, int fd)
 {
 	int		i;
 
+	if (!s || fd < 0)
+		return ;
 	i = 0;
 	while (s[i])
 		i++;
