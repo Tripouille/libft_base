@@ -6,7 +6,7 @@
 /*   By: jgambard <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 16:24:59 by jgambard     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 11:32:23 by jgambard    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/17 10:41:52 by jgambard    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,8 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
+	if (!lst || !f)
+		return ;
 	(*f)(lst->content);
-	if (lst->next)
-		ft_lstiter(lst->next, f);
+	ft_lstiter(lst->next, f);
 }
