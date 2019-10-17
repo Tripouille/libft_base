@@ -6,7 +6,7 @@
 /*   By: jgambard <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 16:33:15 by jgambard     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/14 15:21:01 by jgambard    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/17 10:48:43 by jgambard    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,7 +30,7 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *))
 	t_list		*map;
 	t_list		*tmp;
 
-	if (!lst || !(map = ft_lstn((*f)(lst->content))))
+	if (!lst || !f || !(map = ft_lstn((*f)(lst->content))))
 		return (0);
 	tmp = map;
 	while ((lst = lst->next))
