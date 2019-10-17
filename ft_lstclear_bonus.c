@@ -6,7 +6,7 @@
 /*   By: jgambard <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 16:12:54 by jgambard     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/16 15:21:56 by jgambard    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/17 10:29:13 by jgambard    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,10 +16,11 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (!*lst)
+	if (!lst || !*lst)
 		return ;
 	ft_lstclear(&(*lst)->next, del);
-	(*del)((*lst)->content);
+	if (del)
+		(*del)((*lst)->content);
 	free(*lst);
 	*lst = 0;
 }
