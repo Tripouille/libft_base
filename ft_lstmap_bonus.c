@@ -6,13 +6,13 @@
 /*   By: jgambard <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 16:33:15 by jgambard     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/17 17:37:17 by jgambard    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 16:30:06 by jgambard    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdlib.h"
+#include <stdlib.h>
 
 static t_list		*ft_lstn(void *content)
 {
@@ -41,7 +41,7 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 	t_list		*map;
 	t_list		*tmp;
 
-	if (!lst || !f || !del || !(map = ft_lstn((*f)(lst->content))))
+	if (!lst || !(map = ft_lstn((*f)(lst->content))))
 		return (0);
 	tmp = map;
 	while ((lst = lst->next))
